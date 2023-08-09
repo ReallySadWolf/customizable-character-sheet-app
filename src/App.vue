@@ -1,15 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <CreateWordModal ref="CWModal"></CreateWordModal>
+  <CreateWorldButton></CreateWorldButton>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
+import CreateWordModal from './components/worlds/CreateWordModal.vue';
+import CreateWorldButton from './components/worlds/CreateWorldButton.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CreateWordModal,
+    CreateWorldButton
+  },
+  methods: {
+    displayCreateWorldModal() {
+      this.$refs.CWModal.toggleModal();
+    }
   }
 }
 </script>
