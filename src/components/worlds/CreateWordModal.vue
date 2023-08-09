@@ -7,8 +7,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="alert alert-danger fade" tabindex="-1" role="alert">
-            A simple danger alert with. Give it a click if you like.
+          <div id="alertContainer">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">World name</span>
@@ -42,10 +41,14 @@ export default {
       myModal.toggle();
     },
     createWorld() {
-      var errorText = document.getElementById("ErrorText");
+      var alertContainer = document.getElementById("alertContainer");
       var worldName = document.getElementById("WorldNameInput").value;
       if (worldName == "") {
-        errorText.value = "Invalid name";
+        var alertNode = document.createElement("div");
+        alertNode.setAttribute("class", "alert alert-danger");
+        alertNode.setAttribute("role", "alert");
+        alertNode.innerHTML = "World name has to have at least one character.";
+        alertContainer.appendChild(alertNode);
       } else {
         localStorage.setItem(worldName, "");
         var myModal = bootstrap.Modal.getOrCreateInstance(
@@ -57,3 +60,4 @@ export default {
   },
 };
 </script>
+
