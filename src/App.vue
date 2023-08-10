@@ -1,12 +1,12 @@
 <template>
-  <WorldButton></WorldButton>
-  <CreateWordModal ref="CWModal"></CreateWordModal>
+  <WorldButton title="Working title" description='working description of the Mini. World asdf' imgLink="https://cdnb.artstation.com/p/assets/images/images/056/614/903/large/deep-voyage-stunning-anime-landscape.jpg?1669693899"></WorldButton>
+  <WorldModal ref="CWModal"></WorldModal>
   <CreateWorldButton></CreateWorldButton>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-import CreateWordModal from './components/worlds/CreateWordModal.vue';
+import WorldModal from './components/worlds/WorldModal.vue';
 import CreateWorldButton from './components/worlds/CreateWorldButton.vue'
 import WorldButton from './components/worlds/WorldButton.vue'
 
@@ -14,7 +14,7 @@ export default {
   name: 'App',
   components: {
     WorldButton,
-    CreateWordModal,
+    WorldModal,
     CreateWorldButton
   },
   methods: {
