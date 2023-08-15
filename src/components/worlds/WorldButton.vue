@@ -1,5 +1,5 @@
 <template>
-    <div class="col">
+    <div class="col" v-bind:id="title">
         <div class="card shadow-sm text-center" style="width: 20rem;">
             <svg v-if="imgLink == ''" class="bd-placeholder-img card-img-top" width="100%" height="225"
                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
@@ -21,7 +21,7 @@
                                     d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                             </svg>
                         </button>
-                        <button type="button" class="btn btn-light">
+                        <button type="button" class="btn btn-light" v-bind:value="title" @click="editWorld(title)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path
@@ -30,7 +30,7 @@
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg>
                         </button>
-                        <button type="button" class="btn btn-danger">
+                        <button type="button" class="btn btn-danger" v-bind:value="title" @click="deleteWorld(title)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-trash-fill" viewBox="0 0 16 16">
                                 <path
@@ -49,10 +49,12 @@
 export default {
     name: "WorldButton",
     methods: {
-        editWorld() {
-            this.$parent.displayEditWorldModal();
+        editWorld(worldName) {
+            this.$parent.displayEditWorldModal(worldName);
         },
-        deleteWorld() {
+        deleteWorld(worldName) {
+            localStorage.removeItem(worldName);
+            this.$parent.deleteWorld(worldName);
         },
         enterWorld(worldName) { 
             console.log(worldName)
