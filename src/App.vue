@@ -1,21 +1,14 @@
 <template>
-  <WorldsGrid ref="WorldsGrid" :key="componentKey"></WorldsGrid>
-  <WorldModal ref="WorldModal"></WorldModal>
-  <CreateWorldButton></CreateWorldButton>
+  <WorldsPage></WorldsPage>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
-import WorldModal from './components/worlds/WorldModal.vue';
-import WorldsGrid from './components/worlds/WorldsGrid.vue';
-import CreateWorldButton from './components/worlds/CreateWorldButton.vue';
+
 
 export default {
   name: 'App',
   components: {
-    WorldsGrid,
-    WorldModal,
-    CreateWorldButton
+    
   },
   methods: {
     displayCreateWorldModal() {
