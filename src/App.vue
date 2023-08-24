@@ -1,37 +1,39 @@
 <template>
-  <WorldsPage></WorldsPage>
+  <component :is="currentView"></component>
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue';
+import WorldsPage from './WorldsPage.vue';
+import CharacterOverviewPage from './CharacterOverviewPage.vue';
 
+const routes = {
+  '/': WorldsPage,
+  '/worldName': CharacterOverviewPage
+}
 
-export default {
-  name: 'App',
-  components: {
-    
-  },
-  methods: {
-    displayCreateWorldModal() {
-      this.$refs.WorldModal.toggleModal();
-    },
-    displayEditWorldModal(worldName){
-      console.log(worldName);
-      this.$refs.WorldModal.toggleEditModal(worldName);
-    },
-    deleteWorld(worldName){
-      var elementToDelete = document.getElementById(worldName);
-      elementToDelete.remove();
-    },
-    reloadGrid(){
-      this.componentKey += 1;
-    }
-  },
-  data() {
-    return {
-      componentKey: 0
-    }
+const currentPath = ref(window.location.pathname);
+
+window.addEventListener('hashchange', () => {
+  currentPath.value = window.location.pathname;
+});
+
+const currentView = computed(() => {
+  // return routes['/']
+  if (currentPath.value.split('/') == 3) {
+    return 0;
   }
-};
+  else if (currentPath.value.split('/')[1] != "") {
+    return routes['/worldName'];
+  }
+  else {
+    return routes['/'] //|| NotFound
+  }
+});
+</script>
+
+<script>
+console.log((window.location.pathname).split('/'));
 </script>
 
 <style>

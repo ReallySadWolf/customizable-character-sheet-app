@@ -6,7 +6,7 @@
   
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-import WorldModal from './components/worlds/WorldModal.vue';
+import WorldModal from './components/worlds/WorldModal.vue'
 import WorldsGrid from './components/worlds/WorldsGrid.vue';
 import CreateWorldButton from './components/worlds/CreateWorldButton.vue';
 
@@ -31,6 +31,9 @@ export default {
         },
         reloadGrid() {
             this.componentKey += 1;
+        },
+        setViewedWorld(worldName) {
+            this.$parent.setViewedWorld(worldName);
         }
     },
     data() {

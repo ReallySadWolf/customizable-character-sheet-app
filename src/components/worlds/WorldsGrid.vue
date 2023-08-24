@@ -34,11 +34,8 @@ export default {
             var worlds = []
 
             for (var i = 0; i < localStorage.length; i++) {
-                //console.log(localStorage.length);
                 var jsonObj = JSON.parse(localStorage.getItem(localStorage.key(i)));
-                //console.log(localStorage.key(i))
                 jsonObj.title = localStorage.key(i);
-                console.log(JSON.stringify(jsonObj));
                 worlds.push(jsonObj);
             }
 
